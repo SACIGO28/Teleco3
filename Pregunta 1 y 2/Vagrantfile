@@ -1,0 +1,29 @@
+
+Vagrant.configure("2") do |config|
+
+#MV1 - FIREWALL
+   config.vm.define :vm1 do |vm1|
+	vm1.vm.box = "bento/centos-7.8"
+	vm1.vm.network :private_network, ip: "192.168.50.10"
+	vm1.vm.network :public_network, ip: "192.168.1.210"
+	vm1.vm.hostname = "vm1"
+	vm1.vm.provision "shell", path: "vm1/vm1.sh"
+   end
+
+#MV2 - STREAMA
+   config.vm.define :vm2 do |vm2|
+	vm2.vm.box = "bento/centos-7.8"
+	vm2.vm.network :private_network, ip: "192.168.50.20"
+	vm2.vm.hostname = "vm2"
+	vm2.vm.provision "shell", path: "vm2/vm2.sh"
+   end
+
+#MV3 - WEB SERVER
+   config.vm.define :vm3 do |vm3|
+	vm3.vm.box = "bento/centos-7.8"
+	vm3.vm.network :private_network, ip: "192.168.50.30"
+	vm3.vm.hostname = "vm3"
+	vm3.vm.provision "shell", path: "vm3/vm3.sh"
+   end
+
+end
